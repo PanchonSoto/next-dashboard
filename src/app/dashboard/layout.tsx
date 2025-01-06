@@ -16,7 +16,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
 
             <Sidebar />
 
-            <div className="p-2 w-full text-slate-900">
+            <div className="w-full text-slate-900 max-h-screen overflow-y-scroll">
                 { children }
             </div>
 
