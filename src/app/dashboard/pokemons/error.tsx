@@ -1,7 +1,7 @@
 "use client"; // Error boundaries must be Client Components
 
 import { useEffect } from 'react'
-import { IoBugOutline, IoServer } from 'react-icons/io5';
+import { IoBugOutline } from 'react-icons/io5';
 
 export default function Error({
     error,

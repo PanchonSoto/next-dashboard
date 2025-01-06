@@ -6,6 +6,7 @@ import { SearchParams } from "next/dist/server/request/search-params";
 
 import { Pokemon } from "@/pokemons/interfaces";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 
 
@@ -17,22 +18,43 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const { id } = await params;
-    const { name } = await getPokemon(id?.toString() || "1");
-    return {
-        title: `#${id}-${name}`,
-        description: `Pokemon #${id} description`,
-    };
+
+    try {
+
+        const { id } = await params;
+        const { name } = await getPokemon(id?.toString() || "1");
+        return {
+            title: `#${id}-${name}`,
+            description: `Pokemon #${id} description`,
+        };
+
+    } catch (error: unknown) {
+        console.error(error);
+        return {
+            title: "Pokemon",
+            description: "Pokemon description",
+        }
+    }
+
 };
 
 const getPokemon = async (id: string): Promise<Pokemon> => {
-    const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
-        cache: "force-cache",
-    }).then((res) => res.json());
 
-    console.log('Se cargo: ', pokemon.name);
+    try {
 
-    return pokemon;
+        const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
+            cache: "force-cache",
+        }).then((res) => res.json());
+
+        console.log('Se cargo: ', pokemon.name);
+
+        return pokemon;
+
+    } catch (error:unknown) {
+
+        notFound();
+    }
+
 };
 
 export default async function PokemonPage({ params }: Props) {
