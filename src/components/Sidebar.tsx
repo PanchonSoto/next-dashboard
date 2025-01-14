@@ -6,19 +6,19 @@ import { SidebarMenuItem } from "../components";
 const menuItems = [
   {
     path: "/dashboard/main",
-    icon: <IoBrowsersOutline />,
+    icon: <IoBrowsersOutline fontSize={32} />,
     title: "Dashboard",
     subTitle: "Data Overview",
   },
   {
     path: "/dashboard/counter",
-    icon: <IoCalculator />,
+    icon: <IoCalculator fontSize={32} />,
     title: "Counter",
     subTitle: "Counter State",
   },
   {
     path: "/dashboard/pokemons",
-    icon: <IoFootball />,
+    icon: <IoFootball fontSize={32} />,
     title: "Pokemons",
     subTitle: "Pokemon List",
   }
@@ -28,7 +28,7 @@ export const Sidebar = () => {
 
   return(
     <div id="menu"
-     style={{width: "400px"}}
+     style={{width: "350px"}}
      className="bg-gray-900 min-h-screen z-10 text-slate-300 w-64 left-0 h-screen overflow-y-scroll">
 
       <div id="logo" className="my-4 px-6">
@@ -57,7 +57,7 @@ export const Sidebar = () => {
         </a>
       </div>
 
-      <div id="nav" className="w-full px-6">
+      <div id="nav" className="w-full">
 
         {
           menuItems.map((item, index) => (
