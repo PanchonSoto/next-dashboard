@@ -13,8 +13,8 @@ export const PokemonCard = ({ pokemon }: Props) => {
     const { name } = pokemon;
 
     return (
-        <div className="mx-auto right-0 my-2 w-60">
-            <div className="bg-white rounded overflow-hidden shadow-lg">
+        <div className="right-0 my-2 w-60 mx-1">
+            <div className="bg-white rounded overflow-hidden shadow-lg w-[100%]">
                 <div className="text-center p-6 bg-gray-800 border-b">
 
                     <Image

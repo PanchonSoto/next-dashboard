@@ -10,10 +10,10 @@ interface Props {
 
 export const PokemonGrid = ({ pokemons }: Props) => {
     return (
-        <div className="flex flex-wrap justify-center">
+        <div className="flex flex-wrap justify-evenly">
             {pokemons.map((pokemon) => (
 
-                <PokemonCard key={`${pokemon.id}`} pokemon={pokemon}/>
+                <PokemonCard key={`${pokemon.id}`} pokemon={pokemon} />
                 // <div key={index} className="p-2">
                 //     <div className="flex flex-col items-center justify-center w-32 h-32 bg-gray-200 rounded-lg">
                 //         <Image
