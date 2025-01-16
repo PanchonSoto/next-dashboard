@@ -1,8 +1,4 @@
-import { PokemonsResponse, SimplePokemonRes } from "@/pokemons/interfaces";
-import { PokemonGrid } from "@/pokemons/components";
-
-
-
+import { FavoritePokemons } from "@/components";
 
 
 export const metadata = {
@@ -11,17 +7,11 @@ export const metadata = {
 };
 
 
-export default async function PokemonsPage() {
+export default function PokemonsPage() {
 
 
 
     return (
-        <div className="flex flex-col items-center justify-normal  w-full h-full overflow-scroll py-5">
-
-            <h1 className="text-3xl font-bold mb-5">Pokemons <small className="text-blue-500">Favorites</small></h1>
-
-            <PokemonGrid pokemons={[]} />
-
-        </div>
+        <FavoritePokemons />
     );
 }

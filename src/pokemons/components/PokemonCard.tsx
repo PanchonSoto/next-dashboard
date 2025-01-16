@@ -1,16 +1,30 @@
+"use client";
 import Link from "next/link"
-import { SimplePokemonRes } from "../interfaces"
+import { useDispatch } from "react-redux";
 import Image from "next/image";
-import { IoHeart } from "react-icons/io5";
+import { IoHeart, IoHeartOutline } from "react-icons/io5";
+
+import { useAppSelector } from "@/store";
+import { toggleFavorite } from "@/store/pokemons/pokemons";
+
+import { SimplePokemonRes } from "../interfaces"
 
 
 interface Props {
     pokemon: SimplePokemonRes
 }
 
-export const PokemonCard = ({ pokemon }: Props) => {
+export const PokemonCard = ({ pokemon, }: Props) => {
 
-    const { name } = pokemon;
+    const { name, id } = pokemon;
+
+    const dispatch = useDispatch();
+    const isFavorite = useAppSelector(state => !!state.pokemons.favorites[id]);
+
+
+    const onToggleFav = () => {
+        dispatch(toggleFavorite(pokemon));
+    }
 
     return (
         <div className="right-0 my-2 w-60 mx-1">
@@ -36,18 +50,24 @@ export const PokemonCard = ({ pokemon }: Props) => {
                         </Link>
                     </div>
                 </div>
-                <div className="border-b flex items-center">
-                    <Link href="/dashboard/main" className=" w-full p-4 hover:bg-gray-100 flex items-center justify-center">
+
+                <div
+                    onClick={onToggleFav}
+                    className="border-b flex items-center"
+                >
+                    <div className=" w-full p-4 hover:bg-gray-100 flex items-center justify-center cursor-pointer">
                         <div className="text-red-500">
-                            <IoHeart />
+                            {
+                                isFavorite ? (<IoHeart />) : (<IoHeartOutline />)
+                            }
                         </div>
                         <div className="pl-3">
                             <p className="text-sm font-medium text-gray-800 leading-none">
-                                Add to favorites
+                                {isFavorite ? "Remove from favorites" : "Add to favorites"}
                             </p>
                             {/* <p className="text-xs text-gray-500">View your campaigns</p> */}
                         </div>
-                    </Link>
+                    </div>
 
                 </div>
 

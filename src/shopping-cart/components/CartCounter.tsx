@@ -1,6 +1,6 @@
 "use client";
 import { useAppSelector, useAppDispatch } from "@/store";
-import { addOne, initCounterState, resetCount, substractOne } from "@/store/counter/counterSlice";
+import { addOne, initCounterState, substractOne } from "@/store/counter/counterSlice";
 import React, { useEffect } from "react";
 
 
@@ -22,7 +22,7 @@ const getApiCounter = async (): Promise<CounterResponse> => {
 
 }
 
-export const CartCounter = ({ value = 0 }: Props) => {
+export const CartCounter = ({ }: Props) => {
 
     const count = useAppSelector(state => state.counter.count);
     const dispatch = useAppDispatch();

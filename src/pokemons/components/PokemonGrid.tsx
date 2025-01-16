@@ -1,6 +1,7 @@
 import { PokemonCard } from "./PokemonCard";
 
-import { SimplePokemonRes } from "../interfaces";
+import { SimplePokemonRes } from "@/pokemons/interfaces";
+// import { SimplePokemonRes } from "../interfaces";
 
 
 
@@ -8,7 +9,38 @@ interface Props {
     pokemons: SimplePokemonRes[];
 }
 
+
+// const getPokemons = async (limit = 151, offset = 0): Promise<SimplePokemonRes[]> => {
+
+//     const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
+//     const data: PokemonsResponse = await fetch(url)
+//         .then((res) => res.json())
+//         .catch((error) => console.log(error));
+
+//     const pokemons = data.results.map((pokemon) => ({
+//         name: pokemon.name,
+//         id: pokemon.url.split("/").slice(-2)[0],
+//     }));
+
+
+//     return pokemons;
+// };
+
 export const PokemonGrid = ({ pokemons }: Props) => {
+
+    // const [pokemons, setPokemons] = useState<SimplePokemonRes[]>([]);
+
+    // useEffect(() => {
+    //     const fetchPokemons = async () => {
+
+    //         const fetchedPokemons = await getPokemons();
+
+    //         setPokemons(fetchedPokemons);
+    //     }
+
+    //     fetchPokemons();
+    // }, []);
+
     return (
         <div className="flex flex-wrap justify-evenly">
             {pokemons.map((pokemon) => (
